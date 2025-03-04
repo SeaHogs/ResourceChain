@@ -4,8 +4,12 @@ package resourcechain.resource;
 option go_package = "resourcechain/x/resource/types";
 
 message Resource {
-  uint64 id = 1;
-  string name = 2; 
-  string description = 3; 
-  string creator = 4;
+  string id = 1; 
+  string name = 2;
+  
+  // Suppose we add a new field that changes how the ID is processed or changes the indexing (like a creation timestamp).
+  google.protobuf.Timestamp creation_time = 3;  // newly added mandatory field
+
+  // Or we reorder fields in a way that changes wire encoding (which can be dangerous)
+  string description = 4;
 }
