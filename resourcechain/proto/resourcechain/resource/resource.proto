@@ -1,0 +1,11 @@
+syntax = "proto3";
+package resourcechain.resource;
+
+option go_package = "resourcechain/x/resource/types";
+
+message Resource {
+  uint64 id = 1;
+  string name = 2; 
+  string description = 3; 
+  string creator = 4;
+}
