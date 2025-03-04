@@ -1,0 +1,15 @@
+syntax = "proto3";
+package resourcechain.resourcechain;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "resourcechain/x/resourcechain/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "resourcechain/x/resourcechain/Params";
+  option (gogoproto.equal) = true;
+
+  
+}

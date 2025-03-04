@@ -1,0 +1,17 @@
+syntax = "proto3";
+package resourcechain.resourcechain;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "resourcechain/resourcechain/params.proto";
+
+option go_package = "resourcechain/x/resourcechain/types";
+
+// GenesisState defines the resourcechain module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
