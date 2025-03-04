@@ -53,7 +53,10 @@ import (
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 	"google.golang.org/protobuf/types/known/durationpb"
 
+	resourcemodulev1 "resourcechain/api/resourcechain/resource/module"
 	resourcechainmodulev1 "resourcechain/api/resourcechain/resourcechain/module"
+	_ "resourcechain/x/resource/module" // import for side-effects
+	resourcemoduletypes "resourcechain/x/resource/types"
 	_ "resourcechain/x/resourcechain/module" // import for side-effects
 	resourcechainmoduletypes "resourcechain/x/resourcechain/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
@@ -94,6 +97,7 @@ var (
 		circuittypes.ModuleName,
 		// chain modules
 		resourcechainmoduletypes.ModuleName,
+		resourcemoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
@@ -119,6 +123,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		resourcechainmoduletypes.ModuleName,
+		resourcemoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
@@ -138,6 +143,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		resourcechainmoduletypes.ModuleName,
+		resourcemoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
@@ -296,6 +302,10 @@ var (
 			{
 				Name:   resourcechainmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&resourcechainmodulev1.Module{}),
+			},
+			{
+				Name:   resourcemoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&resourcemodulev1.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},
